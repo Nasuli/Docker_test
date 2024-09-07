@@ -17,7 +17,7 @@ RUN cd /soft \
 # RELEASE DATE: 2024-04-15	
 RUN cd soft/samtools-1.20 \
     && ./configure \
-    && make \
+    && make -j$(nproc) \
     && make install \
     && cd ../  \
     && rm -r samtools-1.20
@@ -28,7 +28,7 @@ ENV SAMTOOLS=/usr/local/bin/samtools
 # RELEASE DATE: 2024-04-15
 RUN cd soft/htslib-1.20 \
     && ./configure  \
-    && make  \
+    && make -j$(nproc) \
     && make install \
     && cd ../  \
     && rm -r htslib-1.20
@@ -38,7 +38,7 @@ RUN cd soft/htslib-1.20 \
 # RELEASE DATE: 2024-04-15
 RUN cd soft/bcftools-1.20 \
     && ./configure  \
-    && make  \
+    && make -j$(nproc) \
     && make install \
     && cd ../  \
     && rm -r bcftools-1.20
@@ -49,7 +49,7 @@ ENV BCFTOOLS=/usr/local/bin/bcftools
 # RELEASE DATE: 2018-08-02
 RUN cd soft/vcftools-0.1.16 \
     && ./configure  \
-    && make  \
+    && make -j$(nproc) \
     && make install \
     && cd ../  \
     && rm -r vcftools-0.1.16
@@ -60,7 +60,7 @@ ENV VCFTOOLS=/usr/local/bin/vcftools
 # RELEASE DATE: 2024
 RUN cd soft/cmake-3.30.3 \
     && ./configure  \
-    && make  \
+    && make -j$(nproc) \
     && make install \
     && cd ../  \
     && rm -r cmake-3.30.3
