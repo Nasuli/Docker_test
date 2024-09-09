@@ -70,10 +70,16 @@ RUN cd soft/cmake-3.30.3 \
 # RELEASE DATE: 2024-08-04
 RUN cd soft/libdeflate-1.21 \
     && cmake -B build && cmake --build build
-ENV LIBDEFLATE=/home/soft/libdeflate-1.21/build/programs  
-ENV PATH=$PATH:/home/soft/libdeflate-1.21/build/programs
+ENV LIBDEFLATE=/soft/libdeflate-1.21/build/programs/libdeflate-gzip
+ENV PATH=$PATH:/soft/libdeflate-1.21/build/programs
 
 ENV SOFT /soft
-WORKDIR soft/
-
 RUN apt clean
+
+## USER CONFIGURATION, containers should not run as root
+RUN adduser --disabled-password --gecos '' user && chsh -s /bin/bash && mkdir -p /home/user
+USER    user
+WORKDIR /home/user
+
+CMD ["bash"]
+
