@@ -30,7 +30,7 @@ docker run --rm -it testimage
 To ensure everything works as expected, you can run the following commands:
 ```
 samtools --help
-$SAMTOOLS -- version
+$SAMTOOLS --version
 $BCFTOOLS --help
 vcftools --version
 ```
@@ -66,7 +66,7 @@ docker run --rm -it testimage
 Для проверки корректности компилляции программ и работы контейнера, зайдите в образ в интерактивном режиме и запустите следующие команды:
 ```
 samtools --help
-$SAMTOOLS -- version
+$SAMTOOLS --version
 $BCFTOOLS --help
 vcftools --version
 ```
